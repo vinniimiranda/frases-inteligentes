@@ -1,7 +1,6 @@
 body {
   background-color: #000014;
   --primary-color: #ecce55;
-  --secondary-color: #ec6755;
 }
 .title {
   display: flex;
@@ -49,7 +48,8 @@ body {
 }
 
 .author-card:hover {
-  box-shadow: 0px 3px 3px #333;
+  box-shadow: 0px 0px 3px var(--primary-color);
+  filter: drop-shadow(0px 0px 1px var(--primary-color));
 }
 .author-image {
   margin-top: 1rem;
@@ -96,7 +96,7 @@ body {
 .btn:hover {
   background-color: var(--primary-color);
   transform: scale(1);
-
+  filter: drop-shadow(0px 0px 2px var(--primary-color));
   color: #333;
 }
 
@@ -142,4 +142,5 @@ body {
 
 .phrase:hover {
   transform: scale(1);
+  filter: drop-shadow(0px 0px 2px var(--primary-color));
 }
