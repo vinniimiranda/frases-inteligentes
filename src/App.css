@@ -7,6 +7,21 @@ body {
   justify-content: center;
 }
 
+.search-div {
+  display:  flex;
+  justify-content: flex-end;
+  padding: 1rem 3rem 1rem 0;
+}
+.input-search{
+  background-color: transparent;
+  outline: none;
+  padding: .7rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #fff;;
+}
+
 .grid {
   padding: 2rem 3rem;
   display: grid;

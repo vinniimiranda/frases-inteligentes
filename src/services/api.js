@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const API = axios.create({
-  baseURL: 'https://api-pensador.herokuapp.com/'
+  baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3333' : 'https://smart-phrases.herokuapp.com/'
 });
