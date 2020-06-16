@@ -30,8 +30,22 @@ export default function Phrases({ match, history }) {
 
       <div className='phrases'>
         {author.phrases?.pt?.map((phrase) => (
-          <div className='phrase' key={phrase}>
-            "{phrase}"
+          <div
+            className='phrase'
+            key={phrase}
+            onClick={() => {
+              navigator.clipboard.writeText(phrase);
+            }}
+          >
+            <span>"{phrase}"</span>
+            <span
+              className='copy'
+              onClick={() => {
+                navigator.clipboard.writeText(phrase);
+              }}
+            >
+              Copiar
+            </span>
           </div>
         ))}
       </div>
