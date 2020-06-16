@@ -1,38 +1,145 @@
-.App {
+body {
+  background-color: #000014;
+  --primary-color: #ecce55;
+  --secondary-color: #ec6755;
+}
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  padding: 2rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+}
+@media (max-width: 1440px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 425px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.author-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #666;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+}
+
+.author-card:hover {
+  box-shadow: 0px 3px 3px #333;
+}
+.author-image {
+  margin-top: 1rem;
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--primary-color);
+  filter: drop-shadow(0px 0px 3px var(--primary-color));
+  border-radius: 50%;
+  transition: all 0.2s ease-out;
+  transform: scale(0.95);
+}
+.author-image:hover {
+  filter: drop-shadow(0px 0px 6px var(--primary-color));
+  transform: scale(1);
+}
+
+.author-name {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn {
+  margin: 2rem 0 1rem 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0px 0px 2px var(--primary-color);
+  border-radius: 4px;
+  padding: 0.7rem 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-out;
+  transform: scale(0.95);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn:hover {
+  background-color: var(--primary-color);
+  transform: scale(1);
+
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.author-page {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 2rem;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+.author-photo {
+  width: 15rem;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0px 0px 2px var(--primary-color);
 }
 
-.App-link {
-  color: #61dafb;
+.phrases {
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.phrase {
+  margin: 1rem 0;
+  background-color: var(--primary-color);
+  box-shadow: 0px 0px 2px var(--primary-color);
+  border: 1px dashed #fff;
+  font-size: 1.3rem;
+  border-radius: 4px;
+  padding: 1.3rem;
+  color: #333;
+  font-weight: bold;
+  transform: scale(0.95);
+  transition: all 0.2s ease-out;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.phrase:hover {
+  transform: scale(1);
 }
