@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { API } from '../../services/api';
+import { FiCopy } from 'react-icons/fi';
+import { ReactComponent as Loader } from '../../assets/icons/spinner-of-dots.svg';
 
 export default function Phrases({ match, history }) {
   const { id } = match.params;
 
-  const [author, setAuthor] = useState({});
+  const [data, setData] = useState({});
 
   useEffect(() => {
     API.get(`/authors/${id}`).then(({ data }) => {
-      setAuthor(data);
+      setData(data);
     });
   }, [id]);
 
@@ -16,39 +18,38 @@ export default function Phrases({ match, history }) {
     history.push('/');
   }
 
-  return (
+  return data?.author?._id ? (
     <div className='author-page'>
-      <div>
+      <div className='go-back'>
         <button className='btn' onClick={handleBack}>
           Voltar
         </button>
       </div>
       <div className='author-info'>
-        <img className='author-photo' src={author.image_url} alt={author.author} />
-        <h2>{author.name}</h2>
+        <img className='author-photo' src={data?.author?.image_url} alt={data?.author?.name} />
+        <h2>{data?.author?.name}</h2>
       </div>
 
       <div className='phrases'>
-        {author.phrases?.pt?.map((phrase) => (
-          <div
-            className='phrase'
-            key={phrase}
-            onClick={() => {
-              navigator.clipboard.writeText(phrase);
-            }}
-          >
-            <span>"{phrase}"</span>
+        {data.phrases?.map((phrase) => (
+          <div className='phrase' key={phrase._id}>
+            <span>"{phrase.value}"</span>
             <span
               className='copy'
               onClick={() => {
-                navigator.clipboard.writeText(phrase);
+                navigator.clipboard.writeText(`"${phrase.value}" - ${data.author.name}`);
               }}
             >
-              Copiar
+              <FiCopy size={20} />
+              <span>Copiar</span>
             </span>
           </div>
         ))}
       </div>
+    </div>
+  ) : (
+    <div className='loading-div'>
+      <Loader size={80} className='loading' />
     </div>
   );
 }
